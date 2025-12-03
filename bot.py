@@ -74,3 +74,17 @@ def callback_query(call):
 # ============================
 print("Bot is running...")
 bot.infinity_polling()
+from flask import Flask
+import threading
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Bot is running"
+
+def run_flask():
+    app.run(host="0.0.0.0", port=8080)
+
+t = threading.Thread(target=run_flask)
+t.start()
